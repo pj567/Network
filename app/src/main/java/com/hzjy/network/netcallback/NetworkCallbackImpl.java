@@ -126,7 +126,7 @@ public class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback {
     private List<MethodManager> findAnnotationMethods(Object observer) {
         List<MethodManager> methodList = new ArrayList<>();
         Class<?> clazz = observer.getClass();
-        while (clazz != null) {
+        while (clazz != null) {//判断父级是否有相应的方法，直至父级没有
             String className = clazz.getName();
             if (className.startsWith("java.") || className.startsWith("javax.") || className.startsWith("android.")) {
                 break;
