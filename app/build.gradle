@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.hzjy.network"
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        config {
+            keyAlias 'Pusher'
+            keyPassword 'Pusher'
+            storeFile file('F:/FFmpeg/GLLivePusher/Pusher.jks')
+            storePassword 'Pusher'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:28.+'
+}
